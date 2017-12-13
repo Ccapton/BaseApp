@@ -41,7 +41,16 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
      * @return
      */
     public abstract int getLayoutId();
-
+    /**
+     * 是否展示返回按钮
+     * @param show
+     */
+    public void setShowBackIcon(boolean show){
+        if(show)
+            baseBinding.back.setVisibility(View.VISIBLE);
+        else
+            baseBinding.back.setVisibility(View.INVISIBLE);
+    }
     /**
      * 是否展示更多按钮
      * @param show
