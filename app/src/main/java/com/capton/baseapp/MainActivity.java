@@ -23,10 +23,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding>{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        refreshLayout = findViewById(R.id.refreshlayout);
-        refreshLayout.setEnableLoadmore(true);
-        refreshLayout.setOnRefreshLoadmoreListener(new OnRefreshLoadmoreListener() {
+        
+        binding.refreshlayout.setEnableLoadmore(true);
+        binding.refreshlayout.setOnRefreshLoadmoreListener(new OnRefreshLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
                 requestData();
@@ -37,10 +36,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding>{
                 requestData();
             }
         });
-        recyclerView = findViewById(R.id.recyclerview);
-        recyclerView.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,dataList));
 
-        requestData();
+        binding.recyclerview.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,dataList));
+
 
     }
 
@@ -49,8 +47,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding>{
             @Override
             public void onSuccess(Response<String> response) {
                 System.out.println(response.body());
-                refreshLayout.finishRefresh();
-                refreshLayout.finishLoadmore();
+                binding.refreshlayout.finishRefresh();
+                binding.refreshlayout.finishLoadmore();
             }
         },this,"头条",0,5);
     }
