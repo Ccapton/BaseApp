@@ -13,6 +13,7 @@ import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.zxy.tiny.Tiny;
 
 /**
  * Created by capton on 2017/12/14.
@@ -25,6 +26,7 @@ public class App extends Application {
         super.onCreate();
 
         OkGo.getInstance().init(this);
+        Tiny.getInstance().init(this);
 
     }
     static {
