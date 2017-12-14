@@ -1,1 +1,1 @@
-include ':app', ':rxretrofit', ':common', ':cropiwa', ':imagepicker'
+include ':app', ':common', ':cropiwa', ':imagepicker'

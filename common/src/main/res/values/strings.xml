@@ -1,2 +1,4 @@
 <resources>
+    <string name="jisu_appkey">9679f404049995cc</string>
+    <string name="jisu_news_api">http://api.jisuapi.com/news/get</string>
 </resources>

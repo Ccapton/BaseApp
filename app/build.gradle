@@ -40,5 +40,4 @@ dependencies {
     implementation project(':common')
     implementation project(':cropiwa')
     implementation project(':imagepicker')
-    implementation project(':rxretrofit')
 }

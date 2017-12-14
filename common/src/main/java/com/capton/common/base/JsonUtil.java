@@ -1,4 +1,4 @@
-package com.capton.rxretrofit.util;
+package com.capton.common.base;
 
 import com.google.gson.Gson;
 
