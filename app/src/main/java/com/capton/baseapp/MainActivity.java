@@ -1,26 +1,16 @@
 package com.capton.baseapp;
 
-import android.os.Bundle;
+import com.capton.baseapp.databinding.ActivityMainBinding;
+import com.capton.common.base.BaseActivity;
 
-import com.capton.baseapp.databinding.LayoutLeftDrawerBinding;
-import com.capton.common.base.BaseDrawerActivity;
 
-public class MainActivity extends BaseDrawerActivity<LayoutLeftDrawerBinding> {
+public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-
-
+    public int getLayoutId() {
+        return R.layout.activity_main;
     }
-
-    @Override
-    public int getDrawerLayout() {
-        return R.layout.layout_left_drawer;
-    }
-
 
     @Override
     public void setClickListener() {
@@ -36,4 +26,7 @@ public class MainActivity extends BaseDrawerActivity<LayoutLeftDrawerBinding> {
     public void clickRightText() {
 
     }
+
+
+
 }
