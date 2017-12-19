@@ -1,62 +1,26 @@
 package com.capton.baseapp;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
-import com.capton.baseapp.databinding.ActivityMainBinding;
-import com.capton.common.base.BaseActivity;
-import com.capton.common.base.OkGoUtil;
-import com.lzy.okgo.callback.StringCallback;
-import com.lzy.okgo.model.Response;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
+import com.capton.baseapp.databinding.LayoutLeftDrawerBinding;
+import com.capton.common.base.BaseDrawerActivity;
 
-public class MainActivity extends BaseActivity<ActivityMainBinding>{
+public class MainActivity extends BaseDrawerActivity<LayoutLeftDrawerBinding> {
 
-    SmartRefreshLayout refreshLayout;
-    ListView recyclerView;
-    String dataList[] =new String[]{"hello","hello","hello","hello","hello","hello","hello","hello"
-    ,"hello","hello","hello","hello","hello","hello","hello","hello"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        binding.refreshlayout.setEnableLoadmore(true);
-        binding.refreshlayout.setOnRefreshLoadmoreListener(new OnRefreshLoadmoreListener() {
-            @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
-                requestData();
-            }
-
-            @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                requestData();
-            }
-        });
-
-        binding.recyclerview.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,dataList));
 
 
-    }
-
-    private void requestData(){
-        OkGoUtil.getNews(new StringCallback() {
-            @Override
-            public void onSuccess(Response<String> response) {
-                System.out.println(response.body());
-                binding.refreshlayout.finishRefresh();
-                binding.refreshlayout.finishLoadmore();
-            }
-        },this,"头条",0,5);
     }
 
     @Override
-    public int getLayoutId() {
-        return R.layout.activity_main;
+    public int getDrawerLayout() {
+        return R.layout.layout_left_drawer;
     }
+
 
     @Override
     public void setClickListener() {
