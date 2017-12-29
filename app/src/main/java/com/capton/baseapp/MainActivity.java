@@ -6,6 +6,10 @@ import com.capton.common.base.BaseActivity;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
+    @Override
+    public String[] getPermissions() {
+        return requestPermissions;
+    }
 
     @Override
     public int getLayoutId() {

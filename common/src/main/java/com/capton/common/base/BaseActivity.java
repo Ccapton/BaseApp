@@ -1,8 +1,10 @@
 package com.capton.common.base;
 
+import android.Manifest;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import com.capton.common.databinding.ActivityBaseBinding;
 
 /**
  * Created by capton on 2017/11/27.
+ * @param <T>
  */
 
 public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatActivity {
@@ -20,6 +23,38 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     public ActivityBaseBinding baseBinding;
     public T binding;
 
+    public static final int CODE_RECORD_AUDIO = 0;
+    public static final int CODE_GET_ACCOUNTS = 1;
+    public static final int CODE_READ_PHONE_STATE = 2;
+    public static final int CODE_CALL_PHONE = 3;
+    public static final int CODE_CAMERA = 4;
+    public static final int CODE_ACCESS_FINE_LOCATION = 5;
+    public static final int CODE_ACCESS_COARSE_LOCATION = 6;
+    public static final int CODE_READ_EXTERNAL_STORAGE = 7;
+    public static final int CODE_WRITE_EXTERNAL_STORAGE = 8;
+    public static final int CODE_MULTI_PERMISSION = 100;
+
+    public static final String PERMISSION_RECORD_AUDIO = Manifest.permission.RECORD_AUDIO;
+    public static final String PERMISSION_GET_ACCOUNTS = Manifest.permission.GET_ACCOUNTS;
+    public static final String PERMISSION_READ_PHONE_STATE = Manifest.permission.READ_PHONE_STATE;
+    public static final String PERMISSION_CALL_PHONE = Manifest.permission.CALL_PHONE;
+    public static final String PERMISSION_CAMERA = Manifest.permission.CAMERA;
+    public static final String PERMISSION_ACCESS_FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    public static final String PERMISSION_ACCESS_COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+    public static final String PERMISSION_READ_EXTERNAL_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE;
+    public static final String PERMISSION_WRITE_EXTERNAL_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
+    public static final String[] requestPermissions = {
+            PERMISSION_RECORD_AUDIO,
+            //  PERMISSION_GET_ACCOUNTS,
+            PERMISSION_READ_PHONE_STATE,
+            //  PERMISSION_CALL_PHONE,
+            //  PERMISSION_CAMERA,
+            //  PERMISSION_ACCESS_FINE_LOCATION,
+            //  PERMISSION_ACCESS_COARSE_LOCATION,
+            PERMISSION_READ_EXTERNAL_STORAGE,
+            PERMISSION_WRITE_EXTERNAL_STORAGE
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +69,15 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         setShowMoreIcon(false);
         setClickListener(true);
         setClickListener();
+
+        PermissionUtils.requestMultiPermissions(this,mPermissionGrant,getPermissions());
     }
+
+    /**
+     * 返回一个权限数组 默认是 requestPermissions (String [])
+     * @return
+     */
+    public abstract String [] getPermissions();
 
     /**
      * 获取子类布局id
@@ -130,4 +173,20 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         baseBinding.title.setText(title);
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionUtils.requestPermissionsResult(this,requestCode,permissions,grantResults,mPermissionGrant);
+    }
+
+    private PermissionUtils.PermissionGrant mPermissionGrant = new PermissionUtils.PermissionGrant() {
+        @Override
+        public void onPermissionGranted(int requestCode) {
+            switch (requestCode) {
+                case PermissionUtils.CODE_MULTI_PERMISSION:
+
+                    break;
+            }
+        }
+    };
 }
