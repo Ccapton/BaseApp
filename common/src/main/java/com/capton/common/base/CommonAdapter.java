@@ -3,6 +3,7 @@ package com.capton.common.base;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
     public Context context;
     private ArrayList<T> dataList = new ArrayList<>();
     private int resId;
-
+    private OnItemClickListener itemClickListener;
 
     public CommonAdapter(Context context, ArrayList<T> dataList, int resId) {
         this.context = context;
@@ -31,9 +32,19 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
     }
 
 
+
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
+        System.out.println("CommonAdapter.onBindViewHolder "+position);
         bindView(holder,dataList.get(position),position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(itemClickListener!=null)
+                    itemClickListener.onItemClick(holder.itemView,position);
+
+            }
+        });
     }
 
     public abstract void bindView(RecyclerView.ViewHolder holder,T data,int position);
@@ -67,5 +78,11 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
     }
 
 
+    public interface OnItemClickListener{
+        void onItemClick(View view, int position);
+    }
 
+    public void setItemClickListener(OnItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
+    }
 }
