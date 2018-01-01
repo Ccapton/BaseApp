@@ -3,7 +3,6 @@ package com.capton.common.base;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
@@ -13,12 +12,12 @@ import java.util.ArrayList;
  * Created by capton on 2017/6/19.
  */
 
-public abstract class CommonAdapter<T,S extends RecyclerView.ViewHolder> extends RecyclerView.Adapter {
+public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
 
     public Context context;
     private ArrayList<T> dataList = new ArrayList<>();
     private int resId;
-    private S sunViewHolder;
+
 
     public CommonAdapter(Context context, ArrayList<T> dataList, int resId) {
         this.context = context;
@@ -46,9 +45,9 @@ public abstract class CommonAdapter<T,S extends RecyclerView.ViewHolder> extends
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return getViewHolder(LayoutInflater.from(context).inflate(resId,parent,false));
+        return new CommonViewHolder(LayoutInflater.from(context).inflate(resId,parent,false));
     }
-    public abstract S getViewHolder(View itemView);
+
 
     public void add(T t){
         dataList.add(t);
