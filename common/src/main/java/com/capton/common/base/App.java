@@ -24,7 +24,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        
+        Utils.init(this);
         OkGo.getInstance().init(this);
         Tiny.getInstance().init(this);
 
