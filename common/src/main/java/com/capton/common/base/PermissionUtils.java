@@ -146,7 +146,7 @@ public class PermissionUtils {
             for (int i = 0; i < notGranted.size(); i++) {
                 Log.d(TAG, "notGranted: " + i +" "+ notGranted.get(i));
             }
-            openSettingActivity(activity, "those permission need granted!");
+            openSettingActivity(activity, "请授予相关权限!");
         }
 
     }
@@ -172,7 +172,7 @@ public class PermissionUtils {
             Log.d(TAG, "showMessageOKCancel requestPermissions");
 
         } else if (shouldRationalePermissionsList.size() > 0) {
-            showMessageOKCancel(activity, "should open those permission",
+            showMessageOKCancel(activity, "请授予相关权限",
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -205,8 +205,8 @@ public class PermissionUtils {
     private static void showMessageOKCancel(final Activity context, String message, DialogInterface.OnClickListener okListener) {
         new AlertDialog.Builder(context)
                 .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .setNegativeButton("Cancel", null)
+                .setPositiveButton("确定", okListener)
+                .setNegativeButton("取消", null)
                 .create()
                 .show();
 

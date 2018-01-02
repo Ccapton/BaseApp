@@ -45,7 +45,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     public static final String PERMISSION_WRITE_EXTERNAL_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
     public static final String[] requestPermissions = {
-            PERMISSION_RECORD_AUDIO,
+            //PERMISSION_RECORD_AUDIO,
             //  PERMISSION_GET_ACCOUNTS,
             PERMISSION_READ_PHONE_STATE,
             //  PERMISSION_CALL_PHONE,
