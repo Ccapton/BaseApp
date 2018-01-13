@@ -1,1 +1,1 @@
-include ':app', ':common', ':cropiwa', ':imagepicker'
+include ':app', ':common', ':cropiwa', ':imagepicker', ':bottomdialog'

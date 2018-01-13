@@ -47,13 +47,13 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     public static final String[] requestPermissions = {
             //PERMISSION_RECORD_AUDIO,
             //  PERMISSION_GET_ACCOUNTS,
-            PERMISSION_READ_PHONE_STATE,
+           // PERMISSION_READ_PHONE_STATE,
             //  PERMISSION_CALL_PHONE,
             //  PERMISSION_CAMERA,
             //  PERMISSION_ACCESS_FINE_LOCATION,
             //  PERMISSION_ACCESS_COARSE_LOCATION,
-            PERMISSION_READ_EXTERNAL_STORAGE,
-            PERMISSION_WRITE_EXTERNAL_STORAGE
+           // PERMISSION_READ_EXTERNAL_STORAGE,
+           // PERMISSION_WRITE_EXTERNAL_STORAGE
     };
 
     @Override
@@ -70,6 +70,8 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         setClickListener(true);
         setClickListener();
 
+        if(getPermissions() != null)
+            if(getPermissions().length != 0)
         PermissionUtils.requestMultiPermissions(this,mPermissionGrant,getPermissions());
     }
 
@@ -149,6 +151,14 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
                 clickRightText();
             }
         });
+    }
+
+    /**
+     * 设置返回键图标
+     * @param iconRes
+     */
+    public void setBackIconRes(int iconRes){
+        baseBinding.back.setImageResource(iconRes);
     }
 
     /**
