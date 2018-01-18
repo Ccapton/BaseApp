@@ -182,6 +182,9 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     public void setTitle(String title){
         baseBinding.title.setText(title);
     }
+     public void setTitle(int stringRes){
+        baseBinding.title.setText(stringRes);
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
