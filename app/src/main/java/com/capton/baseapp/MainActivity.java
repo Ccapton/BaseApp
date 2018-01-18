@@ -1,14 +1,14 @@
 package com.capton.baseapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
+import android.support.design.widget.Snackbar;
 import android.view.View;
-import android.widget.TextView;
 
 import com.capton.baseapp.databinding.ActivityMainBinding;
 import com.capton.common.base.BaseActivity;
-import com.capton.common.base.DialogUtil;
+import com.capton.common.base.SnackBarUtil;
 
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
@@ -38,25 +38,26 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     }
 
+    Snackbar snackbar;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(R.string.app_name);
 
-        TextView textView = new TextView(this);
-        textView.setText("capton");
-        textView.setHeight(300);
+         binding.test.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 snackbar = SnackBarUtil.showActionIndefinite(binding.test, "测试SnackBar","OK",new View.OnClickListener() {
+                     @Override
+                     public void onClick(View v) {
+                         snackbar.dismiss();
+                         startActivity(new Intent(MainActivity.this,DemoActivity.class));
+                     }
+                 });
+
+              }
+         });
 
 
-       final AlertDialog dialog = DialogUtil.showCustomDialog(this,
-               textView,
-               R.drawable.dialog_demo,
-               600,
-               false);
-       textView.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               dialog.dismiss();
-           }
-       });
     }
 }

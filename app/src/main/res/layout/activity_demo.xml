@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<RelativeLayout
+    android:id="@+id/leftDrawer"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="300dp">
+
+     <TextView
+         android:text="THIS IS TEST LAYOUT"
+         android:gravity="center"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent" />
+
+
+</RelativeLayout>
+     <android.support.design.widget.NavigationView
+         android:id="@+id/navigation"
+         android:layout_gravity="start"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         app:headerLayout="@layout/layout_head"
+         app:menu="@menu/menu_demo"
+         android:scrollbars="none"
+         >
+
+     </android.support.design.widget.NavigationView>
+</android.support.v4.widget.DrawerLayout>
