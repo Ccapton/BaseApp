@@ -25,7 +25,6 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
 
         binding = DataBindingUtil.inflate(getLayoutInflater(),getLayoutId(),container,false);
 
-
         return binding.getRoot();
     }
 

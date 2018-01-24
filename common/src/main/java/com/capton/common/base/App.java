@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.blankj.utilcode.util.Utils;
 import com.capton.common.R;
+import com.capton.common.bmob.BmobUtil;
 import com.lzy.okgo.OkGo;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreater;
@@ -25,6 +26,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        BmobUtil.init(this,"cbef46b7b1059c51bc7b1fbfd7078c9a");
         
         Utils.init(this);
         OkGo.getInstance().init(this);

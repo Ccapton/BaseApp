@@ -32,6 +32,8 @@ android {
         main.jniLibs.srcDirs = ['libs']
     }
 
+    useLibrary 'org.apache.http.legacy'
+
 }
 
 dependencies {
@@ -54,4 +56,10 @@ dependencies {
     compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
 
     compile 'com.android.support:design:26.1.0'
- }
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'cn.bmob.android:http-legacy:1.0'
+
+    compile 'cn.bmob.android:bmob-sdk:3.4.6'
+
+
+}

@@ -9,12 +9,11 @@
     tools:context="com.capton.baseapp.MainActivity">
 
 
-    <TextView
-        android:id="@+id/test"
-        android:gravity="center"
-        android:text="CLICK ME"
+    <RelativeLayout
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+    </RelativeLayout>
 
 </RelativeLayout>
 </layout>
