@@ -3,9 +3,11 @@ package com.capton.baseapp;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.capton.baseapp.databinding.ActivityMainBinding;
 import com.capton.common.base.BaseActivity;
+import com.capton.common.base.CommonAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,7 +37,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     public void clickRightText() {
-
+        adapter.add("这是新建的");
     }
 
      MainFragment mainFragment;
@@ -79,6 +81,13 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
        // adapter = new DemoAdapter(this,data,R.layout.item_left);
         binding.rv.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         binding.rv.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                adapter.remove(position);
+            }
+        });
 
     }
 

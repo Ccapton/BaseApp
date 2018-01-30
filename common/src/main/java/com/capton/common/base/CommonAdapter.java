@@ -39,8 +39,6 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
         return position;
     }
 
-
-
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
 
@@ -100,6 +98,13 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    public List<T> getDataList() {
+        return dataList;
+    }
+
+    public void setDataList(List<T> dataList) {
+        this.dataList = dataList;
+    }
 
     public interface OnItemClickListener{
         void onItemClick(View view, int position);
