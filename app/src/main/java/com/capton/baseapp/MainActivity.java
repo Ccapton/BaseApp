@@ -75,8 +75,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         for (int i = 0; i < 30; i++) {
             data.add("Demo Hello World! "+i);
         }
-       // adapter = new DemoAdapter(this,data,resIdMap);
-        adapter = new DemoAdapter(this,data,R.layout.item_left);
+        adapter = new DemoAdapter(this,data,resIdMap);
+       // adapter = new DemoAdapter(this,data,R.layout.item_left);
         binding.rv.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         binding.rv.setAdapter(adapter);
 
