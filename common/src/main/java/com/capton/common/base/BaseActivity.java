@@ -60,20 +60,26 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.inflate(getLayoutInflater(),getLayoutId(),null,false);
         baseBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.activity_base,null,false);
-        baseBinding.container.addView(binding.getRoot());
+        binding = DataBindingUtil.inflate(getLayoutInflater(),getLayoutId(),baseBinding.container,true);
 
         setContentView(baseBinding.getRoot());
 
         setShowMoreIcon(false);
         setClickListener(true);
-        setClickListener();
+
 
         if(getPermissions() != null)
             if(getPermissions().length != 0)
         PermissionUtils.requestMultiPermissions(this,mPermissionGrant,getPermissions());
+
+        yourOperation();
     }
+
+    /**
+     * 你的逻辑代码
+     */
+    protected abstract void yourOperation();
 
     /**
      * 返回一个权限数组 默认是 requestPermissions (String [])
@@ -119,9 +125,15 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     }
 
     /**
-     * 抽象点击函数
+     * 是否展示ActionBar
+     * @param show
      */
-    public abstract void setClickListener();
+    public void setShowActionBar(boolean show){
+        if(show)
+            baseBinding.topActionBar.setVisibility(View.VISIBLE);
+        else
+            baseBinding.topActionBar.setVisibility(View.GONE);
+    }
 
         /**
          * 设置右边文字

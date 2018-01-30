@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -16,13 +18,20 @@ import java.util.ArrayList;
 public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
 
     public Context context;
-    private ArrayList<T> dataList = new ArrayList<>();
+    private List<T> dataList = new ArrayList<>();
     private int resId;
     private OnItemClickListener itemClickListener;
+    private Map<Integer,Integer> resIdMap; // key:viewType value:布局文件id
+    private Map<Integer,CommonViewHolder> holderMap; // key:viewType value:布局文件id
 
-    public CommonAdapter(Context context, ArrayList<T> dataList, int resId) {
+    public CommonAdapter(Context context, List<T> dataList, int resId) {
         this.context = context;
         this.resId=resId;
+        this.dataList = dataList;
+    }
+    public CommonAdapter(Context context, List<T> dataList, Map<Integer,Integer> resIdMap) {
+        this.context = context;
+        this.resIdMap = resIdMap;
         this.dataList = dataList;
     }
 
@@ -35,7 +44,7 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
-        System.out.println("CommonAdapter.onBindViewHolder "+position);
+
         bindView(holder,dataList.get(position),position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,11 +63,15 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
         return dataList.size();
     }
 
-    @Override
+     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new CommonViewHolder(LayoutInflater.from(context).inflate(resId,parent,false));
-    }
+        if(resIdMap != null)
+          return new CommonViewHolder(LayoutInflater.from(context).inflate(resIdMap.get(viewType), parent, false));
+         return new CommonViewHolder(LayoutInflater.from(context).inflate(resId, parent, false));
+     }
 
+    @Override
+    public abstract int getItemViewType(int position);
 
     public void add(T t){
         dataList.add(t);
@@ -82,7 +95,7 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
         void onItemClick(View view, int position);
     }
 
-    public void setItemClickListener(OnItemClickListener itemClickListener) {
+    public void setOnItemClickListener(OnItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 }

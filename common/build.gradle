@@ -60,6 +60,7 @@ dependencies {
     compile 'cn.bmob.android:http-legacy:1.0'
 
     compile 'cn.bmob.android:bmob-sdk:3.4.6'
+    compile 'com.hyphenate:hyphenate-sdk:3.3.0'
 
 
 }

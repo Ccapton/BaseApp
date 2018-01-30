@@ -1,15 +1,16 @@
 package com.capton.baseapp;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 
-import com.blankj.utilcode.util.FragmentUtils;
 import com.capton.baseapp.databinding.ActivityMainBinding;
 import com.capton.common.base.BaseActivity;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
@@ -25,10 +26,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         return R.layout.activity_main;
     }
 
-    @Override
-    public void setClickListener() {
 
-    }
 
     @Override
     public void clickMore() {
@@ -44,9 +42,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(R.string.app_name);
 
-        IntentFilter intentFilter = new IntentFilter();
+
+       /* IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("去注册");
         intentFilter.addAction("去登录");
         intentFilter.addAction("去更新");
@@ -57,10 +55,34 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
         mainFragment = new MainFragment();
         FragmentUtils.add(getSupportFragmentManager(),mainFragment,R.id.fragmentContainer);
-
+*/
 
     }
-    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+
+    DemoAdapter adapter;
+    Map<Integer,Integer> resIdMap;
+    List<String> data;
+    @Override
+    protected void yourOperation() {
+        setTitle(R.string.app_name);
+        setShowRightText(true);
+        setRightText("更多");
+
+        resIdMap = new HashMap<>();
+        resIdMap.put(0,R.layout.item_left);
+        resIdMap.put(1,R.layout.item_right);
+        data = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            data.add("Demo Hello World! "+i);
+        }
+       // adapter = new DemoAdapter(this,data,resIdMap);
+        adapter = new DemoAdapter(this,data,R.layout.item_left);
+        binding.rv.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        binding.rv.setAdapter(adapter);
+
+    }
+
+   /* BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if("去注册".equals(intent.getAction())){
@@ -84,11 +106,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     protected void onDestroy() {
         unregisterReceiver(broadcastReceiver);
         super.onDestroy();
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
-        FragmentUtils.hide(getSupportFragmentManager());
-        FragmentUtils.show(mainFragment);
+      //  FragmentUtils.hide(getSupportFragmentManager());
+      //  FragmentUtils.show(mainFragment);
+        super.onBackPressed();
     }
 }

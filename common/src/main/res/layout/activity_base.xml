@@ -14,7 +14,8 @@
             android:id="@+id/topActionBar"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/actionBarHeight"
+            android:elevation="3dp"
+            android:layout_height="?android:attr/actionBarSize"
             android:background="@color/colorPrimary"
             >
             <ImageView
@@ -33,8 +34,7 @@
                 android:id="@+id/title"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/titleTextSize"
-                android:textStyle="bold"
-                android:gravity="center"
+                 android:gravity="center"
                 android:textColor="@color/white"
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"

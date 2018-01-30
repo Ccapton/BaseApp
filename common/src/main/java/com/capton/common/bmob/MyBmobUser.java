@@ -11,6 +11,15 @@ public class MyBmobUser extends BmobUser {
     private String face;
     private boolean gender;
     private String birthday;
+    private String rongCloudToken;
+
+    public String getRongCloudToken() {
+        return rongCloudToken;
+    }
+
+    public void setRongCloudToken(String rongCloudToken) {
+        this.rongCloudToken = rongCloudToken;
+    }
 
     public String getNick() {
         return nick;
