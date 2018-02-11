@@ -1,4 +1,4 @@
-package com.capton.baseapp;
+package com.capton.common.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +7,10 @@ import android.view.View;
 
 import com.blankj.utilcode.util.FragmentUtils;
 import com.blankj.utilcode.util.ToastUtils;
-import com.capton.baseapp.databinding.FragmentSignupBinding;
+import com.capton.common.R;
 import com.capton.common.base.BaseFragment;
 import com.capton.common.bmob.BmobUtil;
+import com.capton.common.databinding.FragmentSignupBinding;
 
 import cn.bmob.v3.listener.SaveListener;
 

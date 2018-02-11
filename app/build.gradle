@@ -39,6 +39,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':common')
     implementation project(':cropiwa')
-    implementation project(':imagepicker')
     implementation project(':bottomdialog')
-  }
+    compile project(path: ':imagepicker')
+}
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

@@ -12,6 +12,9 @@ import com.blankj.utilcode.util.FragmentUtils;
 import com.capton.baseapp.databinding.FragmentMainBinding;
 import com.capton.common.base.BaseFragment;
 import com.capton.common.bmob.BmobUtil;
+import com.capton.common.demo.LoginFragment;
+import com.capton.common.demo.SignUpFragment;
+import com.capton.common.demo.UpdateFragment;
 
 /**
  * Created by capton on 2018/1/19.

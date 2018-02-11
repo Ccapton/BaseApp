@@ -1,12 +1,13 @@
-package com.capton.baseapp;
+package com.capton.common.demo;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.blankj.utilcode.util.ToastUtils;
-import com.capton.baseapp.databinding.FragmentUpdateBinding;
+import com.capton.common.R;
 import com.capton.common.base.BaseFragment;
+import com.capton.common.databinding.FragmentUpdateBinding;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;

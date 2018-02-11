@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/container2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:id="@+id/fragment_container"
+            android:layout_above="@+id/bottom_divider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </RelativeLayout>
+        <View
+            android:id="@+id/bottom_divider"
+            android:background="@color/grey"
+            android:layout_above="@+id/bottomnavi_view"
+            android:layout_width="match_parent"
+            android:layout_height="2px"/>
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottomnavi_view"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            >
+            <LinearLayout
+                android:id="@+id/bottomLinear"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </LinearLayout>
+        </android.support.design.widget.BottomNavigationView>
+
+    </RelativeLayout>
+</layout>

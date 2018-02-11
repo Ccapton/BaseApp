@@ -27,6 +27,13 @@ public class ViewPagerFragment extends Fragment{
     private ViewPager viewpager;
     private TabLayout tablayout;
 
+    private static ViewPagerFragment fragment;
+    public static ViewPagerFragment getInstance(){
+        if(fragment == null)
+            fragment = new ViewPagerFragment();
+        return fragment;
+    }
+
     public List<String> getFragmentNameList() {
         return fragmentNameList;
     }
@@ -89,22 +96,37 @@ public class ViewPagerFragment extends Fragment{
 
             tablayout.setupWithViewPager(viewpager);
         }
-        setTabLayoutVisible(true);
+
+         setTabLayoutVisible(isTabLayoutVisible);
+        if(pageChangeListenerAdded && onPageChangeListener != null)
+            addOnPageChangeListener(onPageChangeListener);
     }
 
     public void setCurrentFragment(int position,boolean smooth){
         viewpager.setCurrentItem(position,smooth);
     }
+    private  boolean pageChangeListenerAdded;
+    private ViewPager.OnPageChangeListener onPageChangeListener;
     public void addOnPageChangeListener(ViewPager.OnPageChangeListener onPageChangeListener){
-        viewpager.addOnPageChangeListener(onPageChangeListener);
+        if(viewpager != null)
+            viewpager.addOnPageChangeListener(onPageChangeListener);
+        else {
+            this.onPageChangeListener = onPageChangeListener;
+            pageChangeListenerAdded = true;
+        }
     }
     public void setOffscreenPageLimit(int num){
         viewpager.setOffscreenPageLimit(num);
     }
+
+    boolean isTabLayoutVisible;
     public void setTabLayoutVisible(boolean show){
-        if(show)
-            tablayout.setVisibility(View.VISIBLE);
-        else
-            tablayout.setVisibility(View.GONE);
+        if(tablayout != null) {
+            if (show)
+                tablayout.setVisibility(View.VISIBLE);
+            else
+                tablayout.setVisibility(View.GONE);
+        }else
+            isTabLayoutVisible = show;
     }
 }

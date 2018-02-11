@@ -2,6 +2,7 @@
 <layout>
     <RelativeLayout
       xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/white"
       android:layout_width="match_parent"
       android:layout_height="match_parent">
     <LinearLayout
@@ -13,6 +14,7 @@
         android:layout_centerInParent="true"
         android:orientation="vertical"
         android:padding="12dp">
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,39 +41,14 @@
                 android:hint="密码"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <EditText
-                android:id="@+id/face"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="face" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <EditText
-                android:id="@+id/birthday"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="birthday"
-                android:inputType="datetime" />
-        </android.support.design.widget.TextInputLayout>
 
 
         <Button
-            android:id="@+id/update"
+            android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="更新" />
+            android:text="登录" />
     </LinearLayout>
   </RelativeLayout>
 </layout>

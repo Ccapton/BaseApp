@@ -2,21 +2,21 @@ package com.capton.baseapp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
+import android.support.v4.app.Fragment;
 
+import com.blankj.utilcode.util.FragmentUtils;
 import com.capton.baseapp.databinding.ActivityMainBinding;
 import com.capton.common.base.BaseActivity;
-import com.capton.common.base.CommonAdapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
+
+    AnimationFragment animationFragment;
 
     @Override
     public String[] getPermissions() {
@@ -28,8 +28,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         return R.layout.activity_main;
     }
 
-
-
     @Override
     public void clickMore() {
 
@@ -37,90 +35,54 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     public void clickRightText() {
-        adapter.add("这是新建的");
+
     }
 
-     MainFragment mainFragment;
-    @Override
+    List<Fragment> fragmentList=new ArrayList<>();
+    List<String> titleList=new ArrayList<>();
+
+      @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+          animationFragment = new AnimationFragment();
+          AnimationChildFragment animationChildFragment = new AnimationChildFragment();
+          Bundle bundle = new Bundle();
+          bundle.putInt("type",0);
+          animationChildFragment.setArguments(bundle);
 
-       /* IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("去注册");
-        intentFilter.addAction("去登录");
-        intentFilter.addAction("去更新");
-        intentFilter.addAction("登录成功");
-        intentFilter.addAction("更新成功");
+          AnimationChildFragment animationChildFragment2 = new AnimationChildFragment();
+          Bundle bundle2 = new Bundle();
+          bundle2.putInt("type",1);
+          animationChildFragment2.setArguments(bundle2);
 
-        registerReceiver(broadcastReceiver,intentFilter);
+          fragmentList.add(animationChildFragment);
+          fragmentList.add(animationChildFragment2);
+          animationFragment.setFragmentList(fragmentList);
+          titleList.add("连载");
+          titleList.add("完结");
+          animationFragment.setFragmentNameList(titleList);
 
-        mainFragment = new MainFragment();
-        FragmentUtils.add(getSupportFragmentManager(),mainFragment,R.id.fragmentContainer);
-*/
+         FragmentUtils.add(getSupportFragmentManager(),animationFragment,R.id.fragmentFrameLayout);
 
-    }
+     }
 
-    DemoAdapter adapter;
     Map<Integer,Integer> resIdMap;
     List<String> data;
     @Override
     protected void yourOperation() {
         setTitle(R.string.app_name);
         setShowRightText(true);
-        setRightText("更多");
+        setRightText("刷新");
 
-        resIdMap = new HashMap<>();
-        resIdMap.put(0,R.layout.item_left);
-        resIdMap.put(1,R.layout.item_right);
-        data = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            data.add("Demo Hello World! "+i);
-        }
-        adapter = new DemoAdapter(this,data,resIdMap);
-       // adapter = new DemoAdapter(this,data,R.layout.item_left);
-        binding.rv.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        binding.rv.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                adapter.remove(position);
-            }
-        });
 
     }
 
-   /* BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if("去注册".equals(intent.getAction())){
-                setTitle("注册");
-            }
-            if("去登录".equals(intent.getAction())){
-                setTitle("去登录");
-            }
-            if("去更新".equals(intent.getAction())){
-                setTitle("去更新");
-            }
-            if("登录成功".equals(intent.getAction())||"更新成功".equals(intent.getAction())){
-                 setTitle(R.string.app_name);
-                 FragmentUtils.hide(getSupportFragmentManager());
-                 FragmentUtils.show(mainFragment);
-            }
-        }
-    };
 
-    @Override
-    protected void onDestroy() {
-        unregisterReceiver(broadcastReceiver);
-        super.onDestroy();
-    }*/
 
     @Override
     public void onBackPressed() {
-      //  FragmentUtils.hide(getSupportFragmentManager());
-      //  FragmentUtils.show(mainFragment);
-        super.onBackPressed();
+        moveTaskToBack(false);
     }
 }
