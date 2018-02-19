@@ -6,4 +6,16 @@
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFF</color>
     <color name="grey">#ddd</color>
+    <color name="colorGrey">#d0d0d0</color>
+    <color name="loginText">#6b6b6b</color>
+    <color name="loginBtn">#f04442</color>
+    <color name="loginBtn_press">#f68482</color>
+    <color name="loginTitleBar">#fdfdfd</color>
+    <color name="loginTips">#a8a8a8</color>
+    <color name="loginTextTitle">#414141</color>
+    <color name="loginTextSignin">#f6665d</color>
+    <color name="loginTitleDivider">#d7d7d7</color>
+    <color name="mygrey2">#d5d7d6</color>
+    <color name="option_bg">#edefee</color>
+    <color name="fragment_bg">#eaeaea</color>
 </resources>

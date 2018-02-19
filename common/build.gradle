@@ -63,5 +63,6 @@ dependencies {
     compile 'com.hyphenate:hyphenate-sdk:3.3.0'
     compile 'q.rorbin:badgeview:1.1.3'
 
+    compile 'org.simple:androideventbus:1.0.5.1'
 
 }
