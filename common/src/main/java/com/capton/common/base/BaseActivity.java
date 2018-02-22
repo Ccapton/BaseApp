@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.capton.common.R;
 import com.capton.common.databinding.ActivityBaseBinding;
+import com.capton.ep.EasyPermission;
 
 /**
  * Created by capton on 2017/11/27.
@@ -44,7 +45,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     public static final String PERMISSION_READ_EXTERNAL_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE;
     public static final String PERMISSION_WRITE_EXTERNAL_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
-    public static final String[] requestPermissions = {
+    public static  String[] requestPermissions = {
             //PERMISSION_RECORD_AUDIO,
             //  PERMISSION_GET_ACCOUNTS,
            // PERMISSION_READ_PHONE_STATE,
@@ -71,7 +72,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
 
         if(getPermissions() != null)
             if(getPermissions().length != 0)
-        PermissionUtils.requestMultiPermissions(this,mPermissionGrant,getPermissions());
+                EasyPermission.request(this,requestPermissions);
 
         yourOperation();
     }
@@ -201,17 +202,8 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        PermissionUtils.requestPermissionsResult(this,requestCode,permissions,grantResults,mPermissionGrant);
+        EasyPermission.onRequestPermissionsResult(requestCode,permissions,grantResults);
     }
 
-    private PermissionUtils.PermissionGrant mPermissionGrant = new PermissionUtils.PermissionGrant() {
-        @Override
-        public void onPermissionGranted(int requestCode) {
-            switch (requestCode) {
-                case PermissionUtils.CODE_MULTI_PERMISSION:
 
-                    break;
-            }
-        }
-    };
 }

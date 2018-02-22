@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">BaseApp</string>
-    <string name="bmob_app_scret">b3645092117053f7</string>
-    <string name="bmob_function_login">login</string>
-    <string name="bmob_function_signup">signup</string>
     <string name="bmob_function_update">update_user</string>
     <string name="bmob_function_base_url">http://cloud.bmob.cn/b3645092117053f7/</string>
 </resources>
