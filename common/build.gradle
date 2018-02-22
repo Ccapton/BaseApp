@@ -65,4 +65,5 @@ dependencies {
 
     compile 'org.simple:androideventbus:1.0.5.1'
 
+    compile 'com.github.Ccapton:EasyPermission:1.0'
 }
