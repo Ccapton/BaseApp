@@ -42,7 +42,8 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
 
-        bindView(holder,dataList.get(position),position);
+        bindView((CommonViewHolder) holder,dataList.get(position),position);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +54,7 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
         });
     }
 
-    public abstract void bindView(RecyclerView.ViewHolder holder,T data,int position);
+    public abstract void bindView(CommonViewHolder holder,T data,int position);
 
     @Override
     public int getItemCount() {
@@ -71,9 +72,9 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
                 }
                 return null;
             }else {
-                return new CommonViewHolder(LayoutInflater.from(context).inflate(resIdMap.get(viewType), parent, false));
+                return new CommonViewHolder(LayoutInflater.from(context).inflate(resIdMap.get(viewType), parent, false),context);
             }
-         return new CommonViewHolder(LayoutInflater.from(context).inflate(resId, parent, false));
+         return new CommonViewHolder(LayoutInflater.from(context).inflate(resId, parent, false),context);
      }
 
 
@@ -83,19 +84,21 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter {
 
     public void add(T t){
         dataList.add(t);
-        notifyDataSetChanged();
+        notifyItemRangeChanged(getItemCount(),getItemCount()+1);
+
     }
     public void add(T t,int index){
         dataList.add(index,t);
-        notifyDataSetChanged();
+        notifyItemInserted(index);
     }
     public void remove(T t){
         dataList.remove(t);
-        notifyDataSetChanged();
+        int position = dataList.indexOf(t);
+        notifyItemRemoved(position);
     }
     public void remove(int index){
         dataList.remove(index);
-        notifyDataSetChanged();
+        notifyItemRemoved(index);
     }
 
     public List<T> getDataList() {
