@@ -12,6 +12,7 @@ import com.capton.common.R;
 import com.capton.common.base.BottomNaviActivity;
 import com.capton.common.base.ViewPagerFragment;
 import com.capton.common.databinding.ActivityDemoBinding;
+import com.capton.ep.EasyPermission;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,11 @@ public class DemoActivity extends BottomNaviActivity<ActivityDemoBinding> {
     @Override
     public String[] getPermissions() {
         return new String[0];
+    }
+
+    @Override
+    public EasyPermission.OnPermissionListener getPermissionListener() {
+        return null;
     }
 
     @Override

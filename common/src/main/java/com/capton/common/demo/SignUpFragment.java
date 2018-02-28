@@ -11,6 +11,7 @@ import com.capton.common.R;
 import com.capton.common.base.BaseFragment;
 import com.capton.common.bmob.BmobUtil;
 import com.capton.common.databinding.FragmentSignupBinding;
+import com.capton.ep.EasyPermission;
 
 import cn.bmob.v3.listener.SaveListener;
 
@@ -24,6 +25,15 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
         return R.layout.fragment_signup;
     }
 
+    @Override
+    public String[] getPermissions() {
+        return new String[0];
+    }
+
+    @Override
+    public EasyPermission.OnPermissionListener getPermissionListener() {
+        return null;
+    }
 
 
     @Override

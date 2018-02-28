@@ -45,17 +45,6 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     public static final String PERMISSION_READ_EXTERNAL_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE;
     public static final String PERMISSION_WRITE_EXTERNAL_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
-    public static  String[] requestPermissions = {
-            //PERMISSION_RECORD_AUDIO,
-            //  PERMISSION_GET_ACCOUNTS,
-           // PERMISSION_READ_PHONE_STATE,
-            //  PERMISSION_CALL_PHONE,
-            //  PERMISSION_CAMERA,
-            //  PERMISSION_ACCESS_FINE_LOCATION,
-            //  PERMISSION_ACCESS_COARSE_LOCATION,
-           // PERMISSION_READ_EXTERNAL_STORAGE,
-           // PERMISSION_WRITE_EXTERNAL_STORAGE
-    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,7 +61,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
 
         if(getPermissions() != null)
             if(getPermissions().length != 0)
-                EasyPermission.request(this,requestPermissions);
+                EasyPermission.request(this,getPermissionListener(),getPermissions());
 
         yourOperation();
     }
@@ -87,6 +76,8 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
      * @return
      */
     public abstract String [] getPermissions();
+
+    public abstract EasyPermission.OnPermissionListener getPermissionListener();
 
     /**
      * 获取子类布局id
