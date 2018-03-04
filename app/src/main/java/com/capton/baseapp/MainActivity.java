@@ -9,6 +9,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.capton.baseapp.databinding.ActivityMainBinding;
 import com.capton.common.base.BaseActivity;
+import com.capton.common.user.LoginActivity;
 import com.capton.ep.EasyPermission;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -61,7 +62,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     public void clickRightText() {
-        ActivityUtils.startActivity(CardActivity.class);
+        ActivityUtils.startActivity(LoginActivity.class);
     }
       @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
