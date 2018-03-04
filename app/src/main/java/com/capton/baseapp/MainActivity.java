@@ -7,7 +7,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.ConvertUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.capton.baseapp.databinding.ActivityMainBinding;
 import com.capton.common.base.BaseActivity;
 import com.capton.ep.EasyPermission;
@@ -27,7 +26,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     public String[] getPermissions() {
-        return new String[]{PERMISSION_CAMERA,PERMISSION_CALL_PHONE};
+        return new String[]{PERMISSION_CAMERA};
     }
 
     @Override
@@ -36,9 +35,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
             @Override
             public void onPermissionDenied(String s) {
                 if (s.equals(PERMISSION_CAMERA)){
-                    ToastUtils.showShort("Camera Denied");
+
                 }else if(s.equals(PERMISSION_CALL_PHONE)){
-                    ToastUtils.showShort("PHONE Denied");
+
                 }
             }
 

@@ -71,6 +71,7 @@ dependencies {
     compile 'com.github.Ccapton:EasyPermission:1.0'
 
     compile 'com.github.Ccapton:loadtoast:2.1.0'
+    compile 'com.github.Ccapton:EasyUpdateDemo:1.1.1'
 
     compile 'com.airbnb.android:lottie:2.5.0'
 
