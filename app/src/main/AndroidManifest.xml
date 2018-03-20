@@ -29,6 +29,8 @@
             </intent-filter>-->
         </activity>
         <activity android:name=".CardActivity"/>
+        <activity android:name="com.capton.common.user.login.view.LoginActivity"/>
+        <activity android:name="com.capton.common.user.signup.view.SignupActivity"/>
     </application>
 
 </manifest>

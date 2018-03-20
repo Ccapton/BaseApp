@@ -9,7 +9,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.capton.baseapp.databinding.ActivityMainBinding;
 import com.capton.common.base.BaseActivity;
-import com.capton.common.user.LoginActivity;
+import com.capton.common.user.login.view.LoginActivity;
 import com.capton.ep.EasyPermission;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -80,7 +80,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     protected void yourOperation() {
         setTitle(R.string.app_name);
         setShowRightText(true);
-        setRightText("点击我呀");
+        setRightText("登录");
 
         for (int i = 0; i < 23; i++) {
             picList.add(url);

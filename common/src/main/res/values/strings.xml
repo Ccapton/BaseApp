@@ -3,8 +3,14 @@
     <string name="jisu_news_api">http://api.jisuapi.com/news/get</string>
     <string name="baseurl">http://capton.free.ngrok.cc/</string>
     <string name="login">login</string>
+    <string name="resetPsw">resetPsw/</string>
     <string name="signup">signup</string>
     <string name="updateUser">updateUser/</string>
+    <string name="getUploadToken">getUploadToken</string>
+    <string name="searchUser0">searchUser/0/</string>
+    <string name="searchUser1">searchUser/1/</string>
+    <string name="addFriend">addFriend/</string>
+    <string name="getFriends">getFriends/</string>
 
     <string-array name="permissions">
         <item>@string/permission_recode_audio_hint</item>

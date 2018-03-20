@@ -134,8 +134,6 @@ public class SignUpActivity extends BaseActivity<LayoutSigninBinding> {
 
     }
 
-
-
     private void runTimer(){
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {

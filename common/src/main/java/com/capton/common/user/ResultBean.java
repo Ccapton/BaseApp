@@ -14,7 +14,7 @@ public class ResultBean {
 
     private int code;
     private String message;
-    private Object data;
+    private User data;
 
     public int getCode() {
         return code;
@@ -32,11 +32,11 @@ public class ResultBean {
         this.message = message;
     }
 
-    public Object getData() {
+    public User getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(User data) {
         this.data = data;
     }
 }
